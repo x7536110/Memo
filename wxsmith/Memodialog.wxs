@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<wxsmith>
+	<object class="wxDialog" name="MemoDialog">
+		<title>Memo</title>
+		<size>330,460</size>
+		<bg>wxSYS_COLOUR_INFOBK</bg>
+		<object class="wxTextCtrl" name="ID_TEXTCTRL1" variable="TextInput" member="yes">
+			<maxlength>15</maxlength>
+			<pos>16,48</pos>
+			<size>240,24</size>
+			<font>
+				<size>11</size>
+				<style>normal</style>
+				<weight>normal</weight>
+				<underlined>0</underlined>
+				<family>swiss</family>
+				<face>Microsoft YaHei UI</face>
+			</font>
+		</object>
+		<object class="wxButton" name="ID_BUTTON1" variable="ButtonAdd" member="yes">
+			<label>添加</label>
+			<pos>272,48</pos>
+			<size>40,24</size>
+			<handler function="OnButtonAddClick" entry="EVT_BUTTON" />
+		</object>
+		<object class="wxStaticText" name="ID_STATICTEXT1" variable="TopBar" member="yes">
+			<label>按&quot;添加&quot;按钮添加一条日志</label>
+			<pos>32,14</pos>
+			<focused>1</focused>
+			<fg>#404040</fg>
+			<font>
+				<size>12</size>
+				<style>normal</style>
+				<weight>normal</weight>
+				<underlined>0</underlined>
+				<family>swiss</family>
+				<face>Microsoft YaHei UI</face>
+			</font>
+		</object>
+		<object class="wxCheckBox" name="ID_CHECKBOX1" variable="CheckBox1" member="yes">
+			<label>Label</label>
+			<pos>248,16</pos>
+			<size>80,14</size>
+			<font>
+				<size>12</size>
+				<style>normal</style>
+				<weight>normal</weight>
+				<underlined>0</underlined>
+				<family>swiss</family>
+				<face>Microsoft YaHei UI</face>
+			</font>
+			<handler function="OnCheckBox1Click" entry="EVT_CHECKBOX" />
+		</object>
+	</object>
+</wxsmith>
