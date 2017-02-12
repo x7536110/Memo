@@ -1146,3 +1146,67 @@
 
 1402761358 c:\wxwidgets-3.0.1\include\wx\msw\stattext.h
 
+1486901851 source:g:\acm\guisample\memo\memo\memoapp.cpp
+	"MemoApp.h"
+	"MemoMain.h"
+	<wx/image.h>
+
+1486901851 g:\acm\guisample\memo\memo\memoapp.h
+	<wx/app.h>
+
+1486922960 g:\acm\guisample\memo\memo\memomain.h
+	<wx/stattext.h>
+	<wx/textctrl.h>
+	<wx/checkbox.h>
+	<wx/button.h>
+	<wx/dialog.h>
+	<wx/checkbox.h>
+	<vector>
+	<queue>
+
+1446667740 source:g:\acm\guisample\memo\memo\resource.rc
+	"wx/msw/wx.rc"
+
+1402761358 c:\wxwidgets-3.0.1\lib\gcc_lib\mswu\wx\setup.h
+
+1486922850 source:g:\acm\guisample\memo\memo\memomain.cpp
+	"MemoMain.h"
+	<wx/msgdlg.h>
+	<wx/file.h>
+	<wx/settings.h>
+	<wx/font.h>
+	<wx/intl.h>
+	<wx/string.h>
+
+1402761358 c:\wxwidgets-3.0.1\include\wx\msgdlg.h
+	"wx/defs.h"
+	"wx/dialog.h"
+	"wx/stockitem.h"
+	"wx/generic/msgdlgg.h"
+	"wx/cocoa/msgdlg.h"
+	"wx/msw/msgdlg.h"
+	"wx/motif/msgdlg.h"
+	"wx/gtk/msgdlg.h"
+	"wx/osx/msgdlg.h"
+	"wx/os2/msgdlg.h"
+
+1402761358 c:\wxwidgets-3.0.1\include\wx\stockitem.h
+	"wx/defs.h"
+	"wx/chartype.h"
+	"wx/string.h"
+	"wx/accel.h"
+
+1402761358 c:\wxwidgets-3.0.1\include\wx\generic\msgdlgg.h
+
+1402761358 c:\wxwidgets-3.0.1\include\wx\msw\msgdlg.h
+
+1402761358 c:\wxwidgets-3.0.1\include\wx\file.h
+	"wx/defs.h"
+	"wx/string.h"
+	"wx/filefn.h"
+	"wx/convauto.h"
+
+1402761358 c:\wxwidgets-3.0.1\include\wx\convauto.h
+	"wx/strconv.h"
+	"wx/fontenc.h"
+

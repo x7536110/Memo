@@ -4,6 +4,7 @@
 		<title>Memo</title>
 		<size>330,460</size>
 		<bg>wxSYS_COLOUR_INFOBK</bg>
+		<handler function="OnInit" entry="EVT_INIT_DIALOG" />
 		<object class="wxTextCtrl" name="ID_TEXTCTRL1" variable="TextInput" member="yes">
 			<maxlength>15</maxlength>
 			<pos>16,48</pos>
