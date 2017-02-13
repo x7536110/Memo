@@ -24,6 +24,7 @@
 using std::vector;
 
 #define MAX_NOTE 16
+
 class MemoDialog: public wxDialog
 {
     public:
@@ -58,9 +59,11 @@ class MemoDialog: public wxDialog
         void OnButtonDelClick(wxCommandEvent& event);
 ;        void LogLoad();
         void LogSave();
-        vector<wxCheckBox*>CheckBox;
+        vector<wxCheckBox*>MemoCheckBox;
+        wxButton* MemoButton[20];
         vector<int>Height;
         int CheckBoxNum;
+        bool CheckBoxValue[20];
         DECLARE_EVENT_TABLE()
 };
 
