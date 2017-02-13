@@ -59,11 +59,10 @@ class MemoDialog: public wxDialog
         void OnButtonDelClick(wxCommandEvent& event);
 ;        void LogLoad();
         void LogSave();
-        vector<wxCheckBox*>MemoCheckBox;
-        wxButton* MemoButton[20];
-        vector<int>Height;
+        wxCheckBox* MemoCheckBox[MAX_NOTE];
+        wxButton* MemoButton[MAX_NOTE];
+        bool CheckBoxValue[MAX_NOTE];
         int CheckBoxNum;
-        bool CheckBoxValue[20];
         DECLARE_EVENT_TABLE()
 };
 

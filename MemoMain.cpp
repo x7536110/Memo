@@ -62,8 +62,9 @@ END_EVENT_TABLE()
 MemoDialog::MemoDialog(wxWindow* parent,wxWindowID id)
 {
     //(*Initialize(MemoDialog)
-    Create(parent, id, _("Memo"), wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE, _T("id"));
+    Create(parent, id, _("Memo"), wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE|wxMINIMIZE_BOX, _T("id"));
     SetClientSize(wxSize(330,460));
+    Move(wxPoint(-1,-1));
     SetBackgroundColour(wxSystemSettings::GetColour(wxSYS_COLOUR_INFOBK));
     TextInput = new wxTextCtrl(this, ID_TEXTCTRL1, wxEmptyString, wxPoint(16,48), wxSize(240,24), 0, wxDefaultValidator, _T("ID_TEXTCTRL1"));
     TextInput->SetMaxLength(15);
@@ -112,32 +113,48 @@ void MemoDialog::OnAbout(wxCommandEvent& event)
 //不可包含空格等特殊字符
 void MemoDialog::OnButtonAddClick(wxCommandEvent& event)
 {
+    //输入为空
     if(TextInput->GetValue()==wxEmptyString)
     {
-        //wxString msg = wxbuildinfo(long_f);
-        //wxMessageBox(msg,_("EMPTY!"));
         TopBar->SetLabel(wxString("请输入有效内容"));
         TopBar->SetForegroundColour(wxColour(255,51,51));
         return;
     }
 
+    //达到储存上限
     if(CheckBoxNum==MAX_NOTE)
     {
-        //wxString msg = wxbuildinfo(long_f);
-        //wxMessageBox(msg,_("full!"));
         TopBar->SetLabel(wxString("日志条目已满，请及时清理"));
         TopBar->SetForegroundColour(wxColour(255,51,51));
         return;
     }
-
+    //添加checkbox
     long ID=wxNewId();
-    wxCheckBox* checkbox= new wxCheckBox(this, ID, TextInput->GetValue(), wxPoint(16,23*CheckBoxNum+80), wxSize(260,18), 0, wxDefaultValidator, TextInput->GetValue());
-    wxFont checkboxfont(12,wxFONTFAMILY_SWISS,wxFONTSTYLE_NORMAL,wxFONTWEIGHT_NORMAL,false,_T("Microsoft YaHei UI"),wxFONTENCODING_DEFAULT);
+    wxCheckBox* checkbox= new wxCheckBox(
+                                         this,
+                                         ID,
+                                         TextInput->GetValue(),
+                                         wxPoint(16,23*CheckBoxNum+80),
+                                         wxSize(260,18),
+                                         0,
+                                         wxDefaultValidator,
+                                         TextInput->GetValue());
+    wxFont checkboxfont(12,
+                        wxFONTFAMILY_SWISS,
+                        wxFONTSTYLE_NORMAL,
+                        wxFONTWEIGHT_NORMAL,
+                        false,
+                        _T("Microsoft YaHei UI"),
+                        wxFONTENCODING_DEFAULT);
     checkbox->SetFont(checkboxfont);
     Connect(ID,wxEVT_COMMAND_CHECKBOX_CLICKED,(wxObjectEventFunction)&MemoDialog::OnCheckBoxClick);
+    checkbox->SetValue(false);
     CheckBoxValue[CheckBoxNum]=false;
 
-    MemoCheckBox.push_back(checkbox);
+    //
+    MemoButton[CheckBoxNum]=NULL;
+
+    MemoCheckBox[CheckBoxNum]=checkbox;
     CheckBoxNum++;
     TextInput->Clear();
     TopBar->SetLabel(wxString("按\"添加\"按钮添加一条日志"));
@@ -151,26 +168,37 @@ void MemoDialog::OnButtonAddClick(wxCommandEvent& event)
 //如果值为假，更改字体样式为标准式样，黑色，并删除button对象
 void MemoDialog::OnCheckBoxClick(wxCommandEvent&  event)
 {
-//    long ID=event.GetId();
-//    wxString msg = wxbuildinfo(long_f);
-//    wxMessageBox(msg, _("Click!"));
+    //触发按键事件后扫描checkbox表，根据表判断触发对象
+    wxCheckBox* checkbox=(wxCheckBox*)event.GetEventObject();
 
     for(int i=0;i<CheckBoxNum;i++)
     {
-        if(MemoCheckBox[i]->GetValue()!=CheckBoxValue[i])
+        //匹配checkbox地址
+        if(MemoCheckBox[i]==checkbox)
         {
-            CheckBoxValue[i]=MemoCheckBox[i]->GetValue();
+            //如果checkbox被标记
             if(MemoCheckBox[i]->GetValue()==true)
             {
+                //设置字体样式为灰色字体
                 MemoCheckBox[i]->SetForegroundColour(wxColour(128,128,128));
+
+                //实例化button对象，用于删除当前checkbox
                 long ID=wxNewId();
-                wxButton* Button=new wxButton(this, ID, _("删除"), wxPoint((MemoCheckBox[i]->GetPosition()).x+260,(MemoCheckBox[i]->GetPosition()).y ), wxSize(40,22), 0, wxDefaultValidator,MemoCheckBox[i]->GetLabel());
+                wxButton* Button=new wxButton(this, ID, _("删除"), wxPoint((MemoCheckBox[i]->GetPosition()).x+260,(MemoCheckBox[i]->GetPosition()).y ), wxSize(34,20), 0, wxDefaultValidator,MemoCheckBox[i]->GetLabel());
+                Connect(ID,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&MemoDialog::OnButtonDelClick);
                 MemoButton[i]=Button;
+
             }
+            //如果是取消标记
             else
             {
+                //恢复当前行颜色
                 MemoCheckBox[i]->SetForegroundColour(wxColour(0,0,0));
+                //销毁已存在的button对象
                 MemoButton[i]->Destroy();
+                //指针置空
+                MemoButton[i]=NULL;
+
             }
         }
     }
@@ -184,15 +212,51 @@ void MemoDialog::OnCheckBoxClick(wxCommandEvent&  event)
 //销毁自身
 void MemoDialog::OnButtonDelClick(wxCommandEvent&  event)
 {
+    //获取事件对象的地址
+    wxButton* button=(wxButton*)event.GetEventObject();
 
+    for(int i=0;i<CheckBoxNum;i++)
+    {
+        //匹配对象
+        if(MemoButton[i]==button)
+        {
+            //处理其他对象的坐标
+            for(int j=i+1;j<CheckBoxNum;j++)
+            {
+                //处理checkbox的坐标
+                MemoCheckBox[j]->SetPosition(wxPoint(MemoCheckBox[j]->GetPosition().x,MemoCheckBox[j]->GetPosition().y-23));
+                //处理对应delbutton的坐标
+                if(MemoCheckBox[j]->GetValue()==true)
+                    MemoButton[j]->SetPosition(wxPoint(MemoButton[j]->GetPosition().x,MemoButton[j]->GetPosition().y-23));
+            }
+
+            //销毁编号i对应的对象
+            MemoCheckBox[i]->Destroy();
+            MemoButton[i]->Destroy();
+
+
+
+            //删除数组中对象的指针
+            for(int j=i;j<CheckBoxNum-1;j++)
+            {
+                MemoCheckBox[j]=MemoCheckBox[j+1];
+                MemoButton[j]=MemoButton[j+1];
+
+            }
+            //num-1
+
+            CheckBoxNum--;
+        }
+    }
 }
-
+//bug::尚不能正确加载UTF-8格式的中文内容
 //加载已保存的数据
 //读文件，将格式化的数据读入内存
 //根据数据内容建立对应控件
 void MemoDialog::LogLoad()
 {
     wxFile file;
+    //加载log文件
     if(file.Open(wxT("log.txt")))
     {
         file.Close();
@@ -203,6 +267,7 @@ void MemoDialog::LogLoad()
 
         text>>num;
         CheckBoxNum=wxAtoi(num);
+        //根据log中的内容重建控件列表
         for(int i=0;i<CheckBoxNum;i++)
         {
             wxString label;
@@ -217,11 +282,12 @@ void MemoDialog::LogLoad()
                 Connect(ID,wxEVT_COMMAND_CHECKBOX_CLICKED,(wxObjectEventFunction)&MemoDialog::OnCheckBoxClick);
                 checkbox->SetValue(true);
                 checkbox->SetForegroundColour(wxColour(100,100,100));
-                MemoCheckBox.push_back(checkbox);
+                MemoCheckBox[i]=checkbox;
                 CheckBoxValue[i]=true;
 
                 ID=wxNewId();
-                wxButton* Button=new wxButton(this, ID, _("删除"), wxPoint((checkbox->GetPosition()).x+260,(checkbox->GetPosition()).y ), wxSize(40,22), 0, wxDefaultValidator,checkbox->GetLabel());
+                wxButton* Button=new wxButton(this, ID, _("删除"), wxPoint((checkbox->GetPosition()).x+260,(checkbox->GetPosition()).y ), wxSize(34,20), 0, wxDefaultValidator,checkbox->GetLabel());
+                Connect(ID,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&MemoDialog::OnButtonDelClick);
                 MemoButton[i]=Button;
             }
             else
@@ -233,10 +299,9 @@ void MemoDialog::LogLoad()
                 Connect(ID,wxEVT_COMMAND_CHECKBOX_CLICKED,(wxObjectEventFunction)&MemoDialog::OnCheckBoxClick);
                 checkbox->SetValue(false);
                 checkbox->SetForegroundColour(wxColour(0,0,0));
-                MemoCheckBox.push_back(checkbox);
+                MemoCheckBox[i]=checkbox;
                 CheckBoxValue[i]=false;
             }
-
         }
     }
     else
@@ -246,23 +311,24 @@ void MemoDialog::LogLoad()
 
 //保存当前数据
 //将checkbox的label、value以及checkbox的数目保存至文件
-//存在bug，无法保存中文
 void MemoDialog::LogSave()
 {
     if(CheckBoxNum>0)
     {
         wxString buf;
+
         buf<<CheckBoxNum<<wxT("\r\n");
-        vector<wxCheckBox*>::iterator it;
-        for(it=MemoCheckBox.begin();it!=MemoCheckBox.end();it++)
-            buf<<(*it)->GetValue()<<wxT(" ")<<(*it)->GetLabel()<<wxT("\r\n");
+
+
+        for(int i=0;i<CheckBoxNum;i++)
+            buf<<MemoCheckBox[i]->GetValue()<<wxT(" ")<<MemoCheckBox[i]->GetLabel()<<wxT("\r\n");
 
         wxFile file;
+//        if(file.Open("log.txt")==false)
+//            file.Create(wxT("log.txt"),true);
         file.Create(wxT("log.txt"),true);
         file.Write(buf);
         file.Close();
-//    checkbox.GetValue()
-//    checkbox.GetLabel()
     }
     else
         return;
