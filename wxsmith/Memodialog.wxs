@@ -2,8 +2,10 @@
 <wxsmith>
 	<object class="wxDialog" name="MemoDialog">
 		<title>Memo</title>
+		<pos>-1,-1</pos>
 		<size>330,460</size>
 		<bg>wxSYS_COLOUR_INFOBK</bg>
+		<style>wxDEFAULT_DIALOG_STYLE|wxMINIMIZE_BOX</style>
 		<object class="wxTextCtrl" name="ID_TEXTCTRL1" variable="TextInput" member="yes">
 			<maxlength>15</maxlength>
 			<pos>16,48</pos>
