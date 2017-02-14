@@ -1169,16 +1169,18 @@
 
 1402761358 c:\wxwidgets-3.0.1\lib\gcc_lib\mswu\wx\setup.h
 
-1486988713 source:g:\acm\guisample\memo\memo\memomain.cpp
+1487076007 source:g:\acm\guisample\memo\memo\memomain.cpp
 	"MemoMain.h"
 	<wx/msgdlg.h>
 	<wx/file.h>
 	<wx/wfstream.h>
 	<wx/txtstrm.h>
 	<wx/event.h>
+	<wx/textfile.h>
 	<stdio.h>
 	<iostream>
 	<string>
+	<fstream>
 	<wx/settings.h>
 	<wx/font.h>
 	<wx/intl.h>
@@ -1234,4 +1236,16 @@
 1402761358 c:\wxwidgets-3.0.1\include\wx\txtstrm.h
 	"wx/stream.h"
 	"wx/convauto.h"
+
+1402761358 c:\wxwidgets-3.0.1\include\wx\textfile.h
+	"wx/defs.h"
+	"wx/textbuf.h"
+	"wx/file.h"
+
+1402761358 c:\wxwidgets-3.0.1\include\wx\textbuf.h
+	"wx/defs.h"
+	"wx/arrstr.h"
+	"wx/convauto.h"
+	"wx/string.h"
+	"wx/dynarray.h"
 
