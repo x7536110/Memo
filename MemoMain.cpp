@@ -8,6 +8,7 @@
  **************************************************************/
 
 #include "MemoMain.h"
+#include "MemoLogger.h"
 #include <wx/msgdlg.h>
 #include <wx/file.h>
 #include <wx/wfstream.h>
@@ -140,13 +141,13 @@ void MemoDialog::OnButtonAddClick(wxCommandEvent& event)
         return;
     }
     string temp=TextInput->GetValue().ToStdString();
-    for(int i=0;i<temp.length();i++)
-        if(temp[i]==' '||temp[i]==' '||temp[i]=='*'||temp[i]=='|'||temp[i]=='   '||temp[i]=='\\')
-    {
-        TopBar->SetLabel(wxString("ÇëÎð°üº¬¿Õ¸ñ¡¢\"*|#@\\\"µÈÌØÊâ×Ö·û"));
-        TopBar->SetForegroundColour(wxColour(255,51,51));
-        return;
-    }
+//    for(int i=0;i<temp.length();i++)
+//        if(temp[i]==''||temp[i]=='{'||temp[i]=='}'||temp[i]=='*'||temp[i]=='|'||temp[i]=='\\')
+//    {
+//        TopBar->SetLabel(wxString("ÇëÎð°üº¬{}\"*|#@\\\"µÈÌØÊâ×Ö·û"));
+//        TopBar->SetForegroundColour(wxColour(255,51,51));
+//        return;
+//    }
 
 
 
@@ -304,7 +305,8 @@ void MemoDialog::LogLoad()
     {
         string label_s;
         string value_s;
-        cin>>value_s>>label_s;
+        cin>>value_s;
+        getline(cin,label_s);
         wxString label=label_s.c_str();
         wxString value=value_s.c_str();
 
