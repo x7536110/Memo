@@ -141,15 +141,6 @@ void MemoDialog::OnButtonAddClick(wxCommandEvent& event)
         return;
     }
     string temp=TextInput->GetValue().ToStdString();
-//    for(int i=0;i<temp.length();i++)
-//        if(temp[i]==''||temp[i]=='{'||temp[i]=='}'||temp[i]=='*'||temp[i]=='|'||temp[i]=='\\')
-//    {
-//        TopBar->SetLabel(wxString("ÇëÎð°üº¬{}\"*|#@\\\"µÈÌØÊâ×Ö·û"));
-//        TopBar->SetForegroundColour(wxColour(255,51,51));
-//        return;
-//    }
-
-
 
     //Ìí¼Ócheckbox
     long ID=wxNewId();
