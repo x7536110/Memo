@@ -1,29 +1,31 @@
 # Memo
-Ò»¸ö±¸ÍüÂ¼Ð¡¹¤¾ß£¬»ùÓÚwxWidgets3.0¿ª·¢  
-# ²âÊÔ°æ±¾ 0.2
+ä¸€ä¸ªå¤‡å¿˜å½•å°å·¥å…·ï¼ŒåŸºäºŽwxWidgets3.0å¼€å‘  
+# æµ‹è¯•ç‰ˆæœ¬ 0.2
 
-* ¹¦ÄÜ&Ê¹ÓÃËµÃ÷
- * ÔÚÎÄ±¾¿òÖÐÊäÈë´ý°ìÊÂÏî£¬µã»÷Ìí¼Ó°´Å¥Ìí¼Óµ½±¸ÍüÂ¼
- * ¿ÉÒÔ±ê¼ÇÒÑÍê³ÉµÄÊÂÏî
- * ¿ÉÒÔÉ¾³ýÒÑ±»±ê¼ÇÍê³ÉµÄÊÂÏî
- * ¹Ø±Õ³ÌÐò×Ô¶¯±£´æÈÕÖ¾£¬ÏÂ´ÎÆô¶¯×Ô¶¯¼ÓÔØ
+* åŠŸèƒ½&ä½¿ç”¨è¯´æ˜Ž
+ * åœ¨æ–‡æœ¬æ¡†ä¸­è¾“å…¥å¾…åŠžäº‹é¡¹ï¼Œç‚¹å‡»æ·»åŠ æŒ‰é’®æ·»åŠ åˆ°å¤‡å¿˜å½•
+ * å¯ä»¥æ ‡è®°å·²å®Œæˆçš„äº‹é¡¹
+ * å¯ä»¥åˆ é™¤å·²è¢«æ ‡è®°å®Œæˆçš„äº‹é¡¹
+ * å…³é—­ç¨‹åºè‡ªåŠ¨ä¿å­˜æ—¥å¿—ï¼Œä¸‹æ¬¡å¯åŠ¨è‡ªåŠ¨åŠ è½½
 
-# ÏÖ´æbug:
- * ²»Ö§³ÖÐÂwindows DPI Ëõ·Å»úÖÆ£¬¸ßËõ·Å±ÈÂÊÏÂ³öÏÖÅÅ°æ»ìÂÒÏÖÏó
- * LinuxÏµÍ³ÏÂ¶ÔUnicodeÖ§³Ö´æÔÚbug£¬ÎÞ·¨ÏÔÊ¾ÖÐÎÄ×Ö·û
+# çŽ°å­˜bug:
+ * ä¸æ”¯æŒæ–°windows DPI ç¼©æ”¾æœºåˆ¶ï¼Œé«˜ç¼©æ”¾æ¯”çŽ‡ä¸‹å‡ºçŽ°æŽ’ç‰ˆæ··ä¹±çŽ°è±¡
+ * Linuxç³»ç»Ÿä¸‹å¯¹Unicodeæ”¯æŒå­˜åœ¨bugï¼Œæ— æ³•æ˜¾ç¤ºä¸­æ–‡å­—ç¬¦
 
-## ¸üÐÂÈÕÖ¾
-   * ²âÊÔ°æ±¾0.2 
-	* É¾³ýÁË¡°²»¿ÉÊ¹ÓÃ¿Õ¸ñµÈ×Ö·û¡±µÄÏÞÖÆ
-   * ²âÊÔ°æ±¾0.1 
-	* ÐÞÕýÁË±£´æÓë¼ÓÔØ¹¦ÄÜ
-	* ÐÞÕýÁËwindowsÏÂµÄÖÐÎÄÖ§³Ö
+## æ›´æ–°æ—¥å¿—
+  * æµ‹è¯•ç‰ˆæœ¬0.2.1  
+   * æ·»åŠ LOGO
+  * æµ‹è¯•ç‰ˆæœ¬0.2 
+	* åˆ é™¤äº†â€œä¸å¯ä½¿ç”¨ç©ºæ ¼ç­‰å­—ç¬¦â€çš„é™åˆ¶
+  * æµ‹è¯•ç‰ˆæœ¬0.1 
+	* ä¿®æ­£äº†ä¿å­˜ä¸ŽåŠ è½½åŠŸèƒ½
+	* ä¿®æ­£äº†windowsä¸‹çš„ä¸­æ–‡æ”¯æŒ
     
 	
-##¿ª·¢»·¾³£º
+##å¼€å‘çŽ¯å¢ƒï¼š
 
 * WxWidgets 3.0.2   
 * GCC4.8.1(TDM64-2)
 
-###Wxwidgets£º
-[µã´ËÏÂÔØ](https://github.com/wxWidgets/wxWidgets)
+###Wxwidgetsï¼š
+[ç‚¹æ­¤ä¸‹è½½](https://github.com/wxWidgets/wxWidgets)
