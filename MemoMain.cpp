@@ -100,6 +100,7 @@ MemoDialog::MemoDialog(wxWindow* parent,wxWindowID id)
     //*)
     CheckBoxNum=0;
     LogLoad();
+    ButtonAdd->SetDefault();
 }
 
 MemoDialog::~MemoDialog()
@@ -165,6 +166,7 @@ void MemoDialog::OnButtonAddClick(wxCommandEvent& event)
     checkbox->SetFont(checkboxfont);
 
     Connect(ID,wxEVT_COMMAND_CHECKBOX_CLICKED,(wxObjectEventFunction)&MemoDialog::OnCheckBoxClick);
+    Connect(ID,wxEVT_LEFT_DCLICK,(wxObjectEventFunction)&MemoDialog::OnCheckBoxDoubleClick);
     checkbox->SetValue(false);
     CheckBoxValue[CheckBoxNum]=false;
 
@@ -229,7 +231,14 @@ void MemoDialog::OnCheckBoxClick(wxCommandEvent&  event)
     }
 
 }
+//鼠标双击事件对应的事件处理程序
+//删除被双击行checkbox对象以及button对象（如果有）
+//对其他checkbox对象以及其附属button的位置进行处理
+//checkbox对象总数-1
+void MemoDialog::OnCheckBoxDoubleClick(wxCommandEvent& event)
+{
 
+}
 //checkbox对应的delete button的事件处理
 //销毁对应的checkbox对象
 //对其他checkbox对象以及其附属button的位置进行处理

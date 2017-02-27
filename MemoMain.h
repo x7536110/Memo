@@ -57,7 +57,8 @@ class MemoDialog: public wxDialog
         //*)
         void OnCheckBoxClick(wxCommandEvent&  event);
         void OnButtonDelClick(wxCommandEvent& event);
-;        void LogLoad();
+        void OnCheckBoxDoubleClick(wxCommandEvent& event);
+;       void LogLoad();
         void LogSave();
         wxCheckBox* MemoCheckBox[MAX_NOTE];
         wxButton* MemoButton[MAX_NOTE];
