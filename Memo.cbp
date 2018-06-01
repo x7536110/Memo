@@ -81,13 +81,15 @@
 			<Add library="libwsock32.a" />
 			<Add library="libodbc32.a" />
 		</Linker>
-		<Unit filename="MemoApp.cpp" />
-		<Unit filename="MemoApp.h" />
-		<Unit filename="MemoMain.cpp" />
-		<Unit filename="MemoMain.h" />
 		<Unit filename="resource.rc">
 			<Option compilerVar="WINDRES" />
 		</Unit>
+		<Unit filename="src/MemoApp.cpp" />
+		<Unit filename="src/MemoApp.h" />
+		<Unit filename="src/MemoLogger.cpp" />
+		<Unit filename="src/MemoLogger.h" />
+		<Unit filename="src/MemoMain.cpp" />
+		<Unit filename="src/MemoMain.h" />
 		<Unit filename="wxsmith/Memodialog.wxs" />
 		<Extensions>
 			<code_completion />
